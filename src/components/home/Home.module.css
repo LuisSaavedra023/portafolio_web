@@ -271,6 +271,10 @@
         font-size: 1.8rem;
     }
 
+    .home-imgHover {
+        opacity: 1;
+    }
+
     .home-sci {
         width: 85%;
         justify-content: space-evenly;
@@ -279,7 +283,7 @@
 
     .btn-box {
         margin-top: 7rem;
-        margin-bottom: 5rem;
+        margin-bottom: 10rem;
         width: 47rem;
     }
 }
