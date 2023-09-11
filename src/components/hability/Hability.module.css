@@ -1,0 +1,177 @@
+.heading {
+    position: relative;
+    display: inline-block;
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.skills {
+    min-height: auto;
+    padding-bottom: 7rem;
+    background: var(--bg-color);
+}
+
+.skills h2 {
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.skills .skills-row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 5rem;
+    margin-top: 1rem;
+}
+
+.skills-row .skills-column {
+    flex: 1 1 40rem;
+}
+
+.skills-box-left {
+    position: relative;
+    padding-right: 1.8rem;
+    padding-left: 0.3rem; 
+    border-left: 0.3rem solid var(--main-color);
+    margin-top: 1rem;
+}
+
+.skills-column .skills-box-left button {
+    position: relative;
+    padding-left: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 1.22rem;
+    font-style: italic;
+    margin-bottom: 0.3rem;
+    color: var(--text-color);
+    transition: color 0.3s, transform 0.3s;
+    max-width: max-content;
+    background: transparent;
+    cursor: pointer;
+}
+
+
+.skills-column .skills-box-left button:hover {
+    color: var(--main-color);
+    transform: translateX(10px);
+}
+
+.skills-box .skills-content-right {
+    position: relative;
+    padding: .5rem 1.5rem;
+    z-index: 1;
+    overflow: hidden;
+    width: 80rem;
+    height: max-content;
+    background: var(--second-bg-color);
+}
+
+.skills-box .skills-content-right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--bg-color);
+    z-index: -1;
+    transition: .5s;
+}
+
+.skills-box .skills-content-right:hover::before {
+    width: 100%;
+}
+
+.skills-content-right p {
+    font-size: 1.6rem;
+    padding-top: .5rem;
+}
+
+/*ANIMATION RELOAD AND SCROLL*/
+.animate {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    z-index: 98;
+}
+
+.animate.scroll {
+    transition: 1s ease;
+    transition-delay: calc(.1s / var(--i));
+    animation: none;
+}
+
+.skills .skills-box-left .animate.scroll {
+    width: 105%;
+}
+
+.skills.show-animate .animate.scroll {
+    transition-delay: calc(.1s * var(--i));
+    width: 0;
+}
+
+/*BREAKPOINTS*/
+@media(max-width: 1201px){
+    
+    .skills-column .skills-box-left button {
+        font-size: 1.7rem;
+    }
+}
+
+@media(max-width: 991px) {
+    .skills-row .skills-column {
+        flex: 1 1 17rem;
+    }
+
+    .skills-box-left button{
+        width: 98%;
+    }
+
+    .skills-box .skills-content-right {
+        width: 75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .skills-column .skills-box-left button {
+        font-size: 1.2rem;
+    }
+    .skills-box .skills-content-right {
+        width: 50rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .skills .skills-row {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+        gap: 5rem;
+        margin-top: 1rem;
+    }
+
+    .skills-column .skills-box-left button {
+        font-size: 1.5rem;
+        width: 30rem;
+    }
+    
+}
+
+@media(max-width: 462px) {
+    .skills-box .skills-content-right{
+        width: 40rem;
+    }
+}    
+
+@media(max-width: 371px){
+    
+    .skills-box .skills-content-right{
+        width: 40rem;
+    }
+}
