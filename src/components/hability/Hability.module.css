@@ -52,7 +52,6 @@
     cursor: pointer;
 }
 
-
 .skills-column .skills-box-left button:hover {
     color: var(--main-color);
     transform: translateX(10px);

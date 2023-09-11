@@ -45,14 +45,11 @@ const Header = () => {
     const modifyOnClickIcon = () => {
       let menuIcon = document.querySelector('#menu-icon');
     
-      //se invierte el estado de activeNavbar.
       setActiveNavbar(!activeNavbar);
     
-      //si activeNavbar es false (es decir, el menú estaba cerrado), se abre el menú.
       if (!activeNavbar) {
         menuIcon.classList.add('bx-x');
       } else {
-        //si activeNavbar es true (es decir, el menú estaba abierto), se cierra el menú.
         menuIcon.classList.remove('bx-x');
       }
     };

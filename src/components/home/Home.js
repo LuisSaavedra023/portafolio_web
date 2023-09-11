@@ -8,24 +8,18 @@ const Home = () => {
     useEffect(() => {
         const handleScroll = () => {
             const sections = document.querySelectorAll('section');
-            //se obtiene la posición actual de desplazamiento.
             const scrollY = window.scrollY;
-            //iteración a través de las secciones para determinar en cuál se encuentra
             sections.forEach((sec) => {
                 const offsetTop = sec.offsetTop;
                 const sectionHeight = sec.offsetHeight;
                 const sectionId = sec.getAttribute('id');
-                //verificación si la posición de desplazamiento está dentro de la sección actual.
                 if (scrollY >= offsetTop && scrollY < offsetTop + sectionHeight) {
                     setCurrentComponent(sectionId);
                 }
             });
         };
-        //se agregar un event listener para el evento de scroll.
         window.addEventListener('scroll', handleScroll);
-        //llamado a handleScroll inicialmente para determinar la sección inicial.
         handleScroll();
-        //limpiar el event listener cuando el componente se desmonte.
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };

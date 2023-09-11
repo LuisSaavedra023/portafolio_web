@@ -9,7 +9,6 @@ const Footer = () => {
         const handleScroll = () => {
             const footer = document.querySelector('footer');
             const rect = footer.getBoundingClientRect();
-            //se ajusta el valor según sea necesario.
             const scrollThreshold = window.innerHeight * 0.9; 
 
             if (rect.top < scrollThreshold) {

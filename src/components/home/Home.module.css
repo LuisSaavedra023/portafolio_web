@@ -235,6 +235,10 @@
         flex-direction: column;
     }
 
+    .btn-box {
+        margin-bottom: 5rem;
+    }
+
     .home-sci {
         width: 160px;
     }
@@ -270,10 +274,12 @@
     .home-sci {
         width: 85%;
         justify-content: space-evenly;
+        margin-top: 10rem;
     }
 
     .btn-box {
         margin-top: 7rem;
+        margin-bottom: 5rem;
         width: 47rem;
     }
 }

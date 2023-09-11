@@ -8,22 +8,17 @@ const Training = () => {
         const handleScroll = () => {
             const sections = document.querySelectorAll('section');
             
-            //iteración a través de las secciones para determinar en cuál se encuentra.
             sections.forEach((sec) => {
                 const rect = sec.getBoundingClientRect();
                 const isSectionInView = rect.top <= window.innerHeight * 0.3 && rect.bottom >= 0;
                 const sectionId = sec.getAttribute('id');
-                //verificación si la sección está en la vista actual.
                 if (isSectionInView) {
                     setCurrentComponent(sectionId);
                 };
             });
         };
-        //se agrega un event listener para el evento de scroll.
         window.addEventListener('scroll', handleScroll);
-        //llamado a handleScroll inicialmente para determinar la sección inicial.
         handleScroll();
-        //limpiar el event listener cuando el componente se desmonte
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
