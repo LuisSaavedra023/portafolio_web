@@ -257,6 +257,10 @@
 }
 
 @media(max-width: 462px) {
+    .home {
+        background-size: contain;
+    }
+
     .home-content h1 {
         font-size: 6.2rem;
         text-align: center;
