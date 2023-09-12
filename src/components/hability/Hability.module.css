@@ -168,9 +168,9 @@
     }
 }    
 
-@media(max-width: 371px){
+@media(max-width: 380px){
     
     .skills-box .skills-content-right{
-        width: 40rem;
+        width: 35rem;
     }
 }

@@ -207,13 +207,13 @@
     }   
 }
 
-@media(max-width: 371px) {
+@media(max-width: 380px) {
     .proyect .sub-title {
         font-size: 1.7rem;
     }
     
     .card {
-        width: 40rem;
+        width: 34rem;
         height: 40rem;
     }
 }
