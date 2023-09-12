@@ -172,6 +172,11 @@
     color: var(--bg-color) !important;
     background: var(--text-color) !important;
 }
+.processingToast {
+    font-size: 1.3rem;
+    color: var(--main-color) !important;
+    background: var(--text-color) !important;
+}
 /*BREAKPOINTS*/
 @media(max-width: 462px) {
     .contact form .input-box .input-field{

@@ -17,6 +17,8 @@ const Contact = () => {
         subject: "",
         message: ""
     });
+    const [validSubmit, setValidSubmit] = useState(false);
+    const [processing, setProcessing] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -38,12 +40,12 @@ const Contact = () => {
         };
     }, []);
 
-    const handleSubmit = (e) => {
+    const handleSubmit =  async (e) => {
         e.preventDefault();
         const {full_name, email, cellphone, subject, message} = dataForm;
         const resultValidate = formValidation(full_name, email, cellphone, subject, message);
         const hasSentForm = Cookies.get('sendForm');
-
+        
         if (hasSentForm) {
             toast.error('Ya has enviado tus datos.', {
               position: toast.POSITION.BOTTOM_RIGHT,
@@ -51,37 +53,44 @@ const Contact = () => {
             });
             return; 
         }
-
-        if (!resultValidate.error) {
-            sendData(dataForm)
-            .then(response => {
-                toast.success(response.message, {
-                    position: toast.POSITION.TOP_CENTER,
-                    className: styles.successNotification,
-                    progressClassName: styles.toastProgress 
-                })
-                setDataForm({
-                    full_name: "",
-                    email: "",
-                    cellphone: "",
-                    subject: "",
-                    message: ""
-                })
-                Cookies.set('sendForm', 'true', { expires: 1 });
-            })
-            .catch(error => {
-                toast.error(error.message, {
+        
+        if (!validSubmit && !hasSentForm) {
+            if (!resultValidate.error) {
+                setValidSubmit(true);
+                setProcessing(true);
+                                
+                try {
+                    const response = await sendData(dataForm);
+                    toast.success(response.message, {
+                        position: toast.POSITION.TOP_CENTER,
+                        className: styles.successNotification,
+                        progressClassName: styles.toastProgress 
+                    });
+                    setDataForm({
+                        full_name: "",
+                        email: "",
+                        cellphone: "",
+                        subject: "",
+                        message: ""
+                    });
+                    Cookies.set('sendForm', 'true', { expires: 1 });
+                    
+                } catch (error) {
+                    toast.error(error.message, {
+                        position: toast.POSITION.BOTTOM_RIGHT,
+                        className: styles.errorNotification
+                    })
+                } finally {
+                    setProcessing(false);
+                }
+                
+            } else {
+                toast.error(resultValidate.message, {
                     position: toast.POSITION.BOTTOM_RIGHT,
                     className: styles.errorNotification
                 })
-            })
-            
-        } else {
-            toast.error(resultValidate.message, {
-                position: toast.POSITION.BOTTOM_RIGHT,
-                className: styles.errorNotification
-            })
-        };
+            };
+        }
     };
 
     const handleOnChange = data => {
@@ -173,7 +182,9 @@ const Contact = () => {
                 autoClose={4000}
                 limit={3}
                 transition={Flip}
-            />
+            >
+                {processing ? <div className={styles.processingToast}>Procesando solicitud...</div>: null}
+            </ToastContainer>
         </section>
     );
 }
