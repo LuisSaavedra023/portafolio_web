@@ -317,7 +317,7 @@
     }
 }
 
-@media(max-width: 371px) {
+@media(max-width: 380px) {
     .home{
         justify-content: center;
     }
@@ -326,11 +326,9 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
-        /* text-align: center;*/
         width: 55rem;
         font-size: 1rem;
         text-align: center;
-        /* margin-left: 5rem; */
     }
 
     .home-content h1{
