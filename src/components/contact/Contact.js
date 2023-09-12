@@ -4,7 +4,8 @@ import {formValidation} from '../../utils/form';
 import { toast, ToastContainer } from 'react-toastify';
 import { Flip } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-import { sendData } from '../../utils/api'
+import { sendData } from '../../utils/api';
+import Cookies from 'js-cookie';
 
 const Contact = () => {
 
@@ -41,6 +42,15 @@ const Contact = () => {
         e.preventDefault();
         const {full_name, email, cellphone, subject, message} = dataForm;
         const resultValidate = formValidation(full_name, email, cellphone, subject, message);
+        const hasSentForm = Cookies.get('sendForm');
+
+        if (hasSentForm) {
+            toast.error('Ya has enviado tus datos.', {
+              position: toast.POSITION.BOTTOM_RIGHT,
+              className: styles.errorNotification
+            });
+            return; 
+        }
 
         if (!resultValidate.error) {
             sendData(dataForm)
@@ -57,6 +67,7 @@ const Contact = () => {
                     subject: "",
                     message: ""
                 })
+                Cookies.set('sendForm', 'true', { expires: 1 });
             })
             .catch(error => {
                 toast.error(error.message, {
@@ -149,7 +160,12 @@ const Contact = () => {
                     <span className={`${styles.animate} ${styles.scroll}`} style={{ "--i": "7" }}></span>
                 </div>
                 <div className={`${styles['btn-box']} ${styles.btns}`}>
-                    <button type="submit" className={`${styles['btn-contact']}`}>Enviar</button>
+                    <button
+                        type="submit" 
+                        className={`${styles['btn-contact']}`}
+                        
+                    >Enviar
+                    </button>
                     <span className={`${styles.animate} ${styles.scroll}`} style={{ "--i": "9" }}></span>
                 </div>
             </form>

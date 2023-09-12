@@ -139,6 +139,12 @@
 
 }
 
+@media(max-width: 380px) {
+    .header {
+        padding: 1rem 4%;
+    }
+}
+
 /*KEYFRAME ANIMATION*/
 @keyframes showRight {
     100% {
