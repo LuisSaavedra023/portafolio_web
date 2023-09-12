@@ -229,6 +229,31 @@
     }
 }
 
+@media (max-height: 550px) {
+    .home-content h1 {
+        font-size: 4rem !important;
+        
+    }
+    .home-content p {
+        font-size: 1.5rem !important;
+        margin-bottom: 1.3rem !important;
+    }
+    .btn-box {
+        margin-top: 0 !important;
+        justify-content: space-around;
+    }
+
+    .btn-box .btn {
+        width: 15rem;
+        font-size: 1.3rem;
+        
+    }
+    .home-sci {
+        bottom: 0; 
+    }
+    
+}
+
 @media (max-width: 520px) {
     .home-content h1 {
         display: flex;
